@@ -6,7 +6,6 @@
         constructor: Index,
         init: function () {
             // this.onIndex();
-            this.login();
         },
         onIndex: function () {
             $.post('json/index.json', function (jsonData) {
