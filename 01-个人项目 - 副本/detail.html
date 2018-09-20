@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Nicole的博客</title>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="shortcut icon" type="img/x-icon" href="img/icon.1.ico" />
+	<link rel="stylesheet" href="css/index.css">
+	<!-- <link rel="stylesheet" href="css/max-1200.css" media="screen and (max-width:1200px)"> -->
+</head>
+
+<body class="container">
+	<div class="nav">
+
+	</div>
+
+	<!-- main -->
+	<div class="main">
+		<!-- main_left -->
+		<div class="main_left">
+			<div class="detail_main">
+
+			</div>
+		</div>
+		<!-- main_right -->
+		<div class="main_right"></div>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery-stars.js"></script>
+	<script>
+		jQuery('.container').jstars({
+			image_path: 'img',
+			image: 'img/bb.jpg',
+			style: 'white',
+			width: 50,
+			height: 50,
+			delay: 4000,
+			frequency: 20
+		});
+		var hash = window.location.hash.slice(1);
+		// console.log(hash);
+		$.get('php/getOneData.php', { id: hash }, function (data) {
+			var dataObj = typeof data == 'object' ? data : eval('(' + data + ')');
+			// console.log(dataObj);
+			var main_detail = $('<div class="detail_title"><h2>很激励的一段话</h2><div class="detail_h4"><h4 class="iconfont">2018-04-08 14:13:33</h4><h4 class="iconfont">2018-04-08 </h4><h4 class="iconfont">2018-04-08</h4></div></div><div class="detail_img"><h2>' + dataObj.title + '</h2><img src="' + dataObj.img + '" class="img_img"></div><div class="share"><img src="img/share.gif" alt=""></div><div class="yued"></div><div class="share"><img src="img/jieshu3.gif" alt=""></div><div class="icon"><img src="img/icon.png" alt=""></div>');
+			$('.detail_main').append(main_detail);
+		});
+		$('.nav').load('font/data/header.html');
+		$('.main_right').load('font/data/main_right.html');
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nicole的博客</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="shortcut icon" type="img/x-icon" href="img/icon.1.ico" />
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body class="container">
+    <div class="nav">
+
+    </div>
+
+    <!-- main -->
+    <div class="main">
+        <!-- main_left -->
+        <div class="main_left">
+            <div class="banner">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="lazy-load" src="img/bb.jpg">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="lazy-load" src="img/mengxiang (1).jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="lazy-load" src="img/shty.jpg" alt="">
+                        </div>
+                    </div>
+                    <!-- 如果需要分页添加 -->
+                    <div class="swiper-pagination"></div>
+                    <!-- 上一页和下一页 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <!-- 滑动条 -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+            <div class="hot">
+                <h2>
+                    <span>【今日推荐】</span>很激励的一段话，送给正在努力奋斗的你</h2>
+                <p>记住：人生，越努力越幸运！自己的人生也会因自己而精彩，努力吧，朋友们，未来因自己而精彩</p>
+            </div>
+            <div class="green">
+                <img class="lazy-load" src="img/indexad1.gif" alt="">
+            </div>
+
+            <div class="main_json">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+        <!-- main_right -->
+        <div class="main_right"></div>
+
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery-stars.js"></script>
+    <script>
+        jQuery('.container').jstars({
+            image_path: 'img',
+            image: 'img/bb.jpg',
+            style: 'white',
+            width: 50,
+            height: 50,
+            delay: 4000,
+            frequency: 20
+        });
+        var Swiper = new Swiper('.swiper-container', {
+            speed: 2000,
+            loop: true,
+            loopedSlides: 5,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
+        var seach = $('#seach').val();
+        var seach_btn = $('#seach_btn');
+        $('.nav').load('font/data/header.html');
+        $('.main_right').load('font/data/main_right.html');
+    </script>
+</body>
+
+</html>

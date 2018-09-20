@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nicole的博客</title>
+    <link rel="shortcut icon" type="img/x-icon" href="img/icon.1.ico" />
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main_right.css">
+    <!-- <link rel="stylesheet" href="css/max-1200.css" media="screen and (max-width:1200px)"> -->
+</head>
+
+<body class="container">
+    <div class="nav">
+
+    </div>
+
+    </div>
+
+    <!-- main -->
+    <div class="main">
+        <!-- main_left -->
+        <div class="main_left">
+            <h2 class="yuan">源码下载</h2>
+            <div class="main_json">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+        <!-- main_right -->
+        <div class="main_right">
+            <div class="tab">
+                <ul>
+                    <li class="miimi">网站公告</li>
+                    <li>加入我们</li>
+                    <li>联系站长</li>
+                    <li>帮助哥们</li>
+                </ul>
+                <div class="tab_div div1" style="display: block">
+                    <ul>
+                        <li>这是针对第一个blog的改版
+                            <span>10-05</span>
+                        </li>
+                        <li>这是针对第一个blog的改版
+                            <span>10-05</span>
+                        </li>
+                        <li>这是针对第一个blog的改版
+                            <span>10-05</span>
+                        </li>
+                        <li>这是针对第一个blog的改版
+                            <span>10-05</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab_div div2">
+                    <h2>想和喜欢站的朋友一起玩耍吗</h2>
+                    <h2>加入我们吧</h2>
+                    <button>点击加入</button>
+                </div>
+                <div class="tab_div div3">
+                    <h2>Email</h2>
+                    <h2>oupanO612@163.com</h2>
+                    <h2>站长QQ:312010483</h2>
+                </div>
+                <div class="tab_div div4">
+                    <div class="div4_img">
+                        <img src="img/zhifubao.JPG" alt="">
+                    </div>
+                    <div class="div4_txt">
+                        <p>账号：231242@qq.com</p>
+                        <p>姓名：撒旦</p>
+                        <p>支付宝建议1--10$</p>
+                    </div>
+                </div>
+            </div>
+            <div class="seach">
+                <input type="text" name="" id="seach" placeholder="请输入关键字">
+                <input type="button" name="" id="seach_btn" value="搜索">
+            </div>
+            <div class="timer">
+                <div class="timer_logo">
+                    <a href="#" class="iconfont">&#xe773;</a>
+                    <h2>系统时间</h2>
+                </div>
+                <div class="timer_main timerMain">
+
+                </div>
+            </div>
+            <div class="timer">
+                <div class="timer_logo">
+                    <a href="#" class="iconfont">&#xe65d;</a>
+                    <h2>赞助商</h2>
+                </div>
+                <div class="timer_main">
+                    <h4>
+                        <img src="img/TB2RqN6wDtYBeNjy1XdXXXXyVXa_1043295612.jpg" alt="">
+                    </h4>
+                </div>
+            </div>
+            <div class="timer one_day">
+                <div class="timer_logo">
+                    <a href="#" class="iconfont">&#xe674;</a>
+                    <h2>每日一句</h2>
+                </div>
+                <div class="timer_main">
+                    <h4>2018年09月10日 23:25:43 星期一</h4>
+                    <h4>
+                        学会控制自己的情绪，不以物喜，不以己悲
+                    </h4>
+                </div>
+            </div>
+            <div class="timer hot_txt">
+                <div class="timer_logo">
+                    <a href="#" class="iconfont">&#xe6be;</a>
+                    <h2>热门文章</h2>
+                </div>
+                <div class="timer_main hot_main">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/jquery-stars.js"></script>
+
+    <script type="text/template" id="move">
+        <li data_mate="<%= stuID %>">  
+            <div class="img"><img src="<%= img %>" alt=""></div>
+            <div class="json_r">
+                <h2>很激励的一段话</h2>
+                <span>2432</span>
+                <span>共<i>404</i>人围观</span>
+                <p><%= title %></p>
+             </div>
+        </li>
+    </script>
+    <script>
+        $('.nav').load('font/data/header.html');
+        jQuery('.container').jstars({
+            image_path: 'img',
+            image: 'img/bb.jpg',
+            style: 'white',
+            width: 20,
+            height: 20,
+            delay: 1000,
+            frequency: 20
+        });
+
+        var p = 1;
+        $.get('php/select.php', { "p": p }, function (data) {
+            var dataObj = typeof data == "object" ? data : eval("(" + data + ")");
+            var data = dataObj.data;
+            console.log(data);
+            var strlen = data.length;
+            console.log(strlen);
+            limitList();
+            $('<a href="#" id="prev" style="float: left;">上一页</a>').appendTo($('.main_left'));
+
+            $('<a href = "#" id = "next" style = "float:left">下一页</a>').appendTo($('.main_left'));
+            $('#prev').click(function () {
+                $('.main_json ul').empty();
+                p -= 5;
+                if (p < 0) {
+                    p = 0;
+                    limitList()
+                    alert('第一页')
+                } else {
+                    limitList()
+                }
+            })
+
+
+            $('#next').on('click', function () {
+                $('.main_json ul').empty();
+                p += 5;
+                if (p < strlen) {
+                    limitList();
+                }
+                else {
+                    alert('以是最后一页')
+                    p = strlen - 5;
+                    limitList();
+                }
+            })
+
+            $('.page').on('click', function () {
+                $('.main_json ul').empty();
+                id = ($(this).html() - 1) * 5;
+                console.log(id);
+                limitList();
+            })
+        })
+
+        function limitList() {
+            var more = $('#move').html();
+            var more1 = _.template(more);
+            $.get('php/limit.php', { p: p }, function (data) {
+                var dataObj = typeof data == "object" ? data : eval('(' + data + ')');
+                var data = dataObj.data;
+                // console.log(data);
+                _.each(data, function (item) {
+                    var $dom = more1(item);
+                    $('.main_json ul').append($dom);
+                })
+            })
+        }
+        $.get('php/select.php', function (data) {
+            var dataObj = typeof data == 'object' ? data : eval('(' + data + ')');
+            var data = dataObj.data;
+            data.forEach(function (data) {
+                var table = $('<li><div class="img"><img src=' + data.img + ' alt=""></div><div class="json_r"><h2>很励志的一段话，送给正在努力奋斗的</h2><span>2018-04-08</span><span>共<i>404</i>人围观</span></div></li>');
+                table.attr('data_mate', data.stuID);
+                $('.hot_main ul').append(table);
+                $('.hot_main ul li').click(function () {
+                    window.open('detail.html#' + $(this).attr('data_mate'), '_self');
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

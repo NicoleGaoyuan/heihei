@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('../font/iconfont.eot');
+            src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+            url('../font/iconfont.woff') format('woff'),
+            url('../font/iconfont.ttf') format('truetype'),
+            url('../font/iconfont.svg#iconfont') format('svg');
+        }
+
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 20px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background: url(img/web.gif);
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .nav {
+            width: 100%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header {
+            width: 90%;
+            height: 80px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin: 0 auto;
+        }
+
+        .header_top {
+            width: 100%;
+            height: 30px;
+            margin: 0 auto
+        }
+
+        .header_top a {
+            color: gray;
+            font-size: .9rem;
+            text-align: center;
+        }
+
+        .header_top ul {
+            width: 60%;
+            float: right;
+        }
+
+        .header_top ul li {
+            float: left;
+            width: 16%;
+            text-align: center;
+        }
+
+        .header_top ul li a {
+            color: gray;
+            font-size: .9rem;
+            text-align: center;
+        }
+
+        .header_top h2{
+            float: left;
+            font-size: .9rem;
+            padding-right:1rem;
+        }
+
+        .logo_ul {
+            width: 100%;
+            position: relative;
+        }
+
+        .logo {
+            width: 17%;
+            height: 50px;
+            font-size: 2rem;
+            color: #009286;
+            float: left;
+        }
+
+        .logo_ul ul {
+            width: 60%;
+            float: right;
+        }
+
+        .logo_ul li {
+            float: left;
+            width: 14%;
+            line-height: 3rem
+        }
+
+        .logo_ul li a {
+            font-size: .9rem;
+            color: gray;
+        }
+
+        .span {
+            width: 60px;
+            height: 35px;
+            border: 1px solid #009286;
+            border-radius: 5px;
+            position: relative;
+            left: 630px;
+            display: none;
+            top: 43px;
+        }
+
+        .span span {
+            position: absolute;
+            margin: 0 auto;
+            display: block;
+            background: #009286;
+            width: 60%;
+            height: 3px;
+            margin-left: 12px;
+            z-index: 99999;
+        }
+
+        .span span:nth-child(1) {
+            top: 8px;
+        }
+
+        .span span:nth-child(2) {
+            top: 15px;
+        }
+
+        .span span:nth-child(3) {
+            top: 23px;
+        }
+
+    </style>
+    <!-- <link rel="stylesheet" href="css/header.css" media="screen and (max-width:1200px)"> -->
+</head>
+
+<body>
+    <div class="header">
+        <div class="header_top">
+            <a href="#">Hi,欢迎<h2 id="username">Nicole</h2>来到我的个人网站!</a>
+            <ul>
+                <li>
+                    <a href="#" class="iconfont">&#xe601;加入收藏</a>
+                </li>
+                <li>
+                    <a href="#" class="iconfont">&#xe692;友情链接</a>
+                </li>
+                <li>
+                    <a href="#" class="iconfont">&#xe611;碎语墙</a>
+                </li>
+                <li>
+                    <a href="#" class="iconfont">&#xe60b;音乐台</a>
+                </li>
+                <li>
+                    <a href="#" class="iconfont">&#xe6c5;我的简历</a>
+                </li>
+                <li>
+                    <a href="#" class="iconfont">&#xe791;关注本站</a>
+                </li>
+            </ul>
+        </div>
+        <div class="logo_ul">
+            <div class="span">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">Nicole的博客</div>
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script>
+        var Aryli = ["博客首页", "前端学习", "后端学习", "源码下载", "生活分享", "关于欧攀", "留言板"];
+        for (var i = 0; i < Aryli.length; i++) {
+            var li = $('<li><a href = "#">' + Aryli[i] + '</a></li>')
+            $('.logo_ul ul').append(li);
+        }
+        $('.logo_ul li:nth-child(7)').click(function () {
+            window.open('message.html');
+        })
+        $('.logo_ul li:nth-child(4)').click(function () {
+            window.open('source code.html');
+        })
+        $('.logo_ul li:nth-child(1)').click(function () {
+            window.open('index.html');
+        })
+        var lock = true;
+        $(".span").click(function () {
+            if (lock) {
+                $('.logo_ul ul').css({
+                    'height': '0'
+                })
+                lock = false;
+            }
+            else {
+                $('.logo_ul ul').css({
+                    'height': '380px'
+                })
+                lock = true;
+            }
+        })
+        if (localStorage.login_mark == 1) {
+                var login_mark = localStorage.login_mark;
+            } else {
+                var login_mark = 0;
+            }
+            if (login_mark == 1) {
+                // 获取进来的用户名称
+                var name = localStorage.name;
+                console.log(name);
+                $('.header_top #username').html(name);
+                // 退出
+            }else{
+                alert('未登录');
+                window.open('login.html','_self');
+            }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" youX="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" youX="ie=edge">
+    <title>Nicole的博客</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="shortcut icon" type="img/x-icon" href="img/icon.1.ico" />
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/max-1200.css" media="screen and (max-width:1200px)">
+</head>
+
+<body class="container">
+    <div class="nav">
+    </div>
+
+    </div>
+
+    <!-- main -->
+    <div class="main">
+        <!-- main_left -->
+        <div class="main_left message_main">
+            <div class="message">
+                <h2>来留个言
+                    <span>抢沙发</span>
+                </h2>
+                <form class="form" method="get">
+                    <p>
+                        昵称：
+                        <input type="text" name="" id="name">
+                    </p>
+                    <p>
+                        主题：
+                        <input type="text" name="" id="youX">
+                    </p>
+                    <p id="mess_p">
+                        <input type="button" value="发表留言" id="mess_btn">
+                        <div class="mess_img">
+                            <img src="img/icon.png" alt="">
+                        </div>
+                        <textarea name="" id="textarea" cols="30" rows="10">
+                        </textarea>
+                    </p>
+                </form>
+                <div class="mess_main">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- main_right -->
+        <div class="main_right">
+
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-stars.js"></script>
+    <script>
+        jQuery('.container').jstars({
+            image_path: 'img',
+            image: 'img/bb.jpg',
+            style: 'white',
+            width: 20,
+            height: 20,
+            delay: 1000,
+            frequency: 20
+        });
+        $('.nav').load('font/data/header.html');
+        $('.main_right').load('font/data/main_right.html');
+
+        function Index() {
+            this.init();
+        }
+        Index.prototype = {
+            constructor: Index,
+            init: function () {
+                this.speak();
+                this.render();
+            },
+            speak: function () {
+                $('.mess_main ul').empty();
+                $('#mess_btn').on('click', function () {
+                    var object = {
+                        username: $('#name').val(),
+                        title: $('#textarea').val(),
+                        youX:$('#youX').val()
+                    }
+                    if ($('#name').val() == '') {
+                        alert('用户名不能为空')
+                    } else if ($('#textarea').val() == '') {
+                        alert('内容不能为空')
+                    }  else if ($('#youX').val() == '') {
+                        alert('内容不能为空')
+                    } else {
+                        $.get('php/add.php', object, function (back) {
+                            console.log(back)
+                            if (back == '插入成功') {
+                                // alert("添加成功");
+                                window.location.href = "message.html";
+                            } else {
+                                alert("添加失败");
+                            }
+                        })
+                    }
+                })
+
+            },
+
+            render: function () {
+                $('.mess_main ul').empty();
+                $.get('php/mess_select.php', function (back) {
+                    var dataObj = typeof back == 'object' ? back : eval('(' + back + ')');
+                    var dataArr = dataObj.data;
+                    console.log(dataArr);
+                    for (var i = 0; i < dataArr.length; i++) {
+                        var li = $('<li></li>');
+                        $('<div class="mess_img"><img src="img/icon.png" alt=""></div><div class="mess_txt"><div class="txt_title"><h2>昵称是<span>' + dataArr[i].username + '</span>的用户<h2>(2017-1-2 09:22:32)</h2></h2></div><div class="txt_title2">' + dataArr[i].youX +':' + dataArr[i].title  +'</div><div id="guanli"><h2>管理员回复：</h2><span>谢谢支持,需要的话联系</span></div></div>').appendTo(li);
+                        $('.mess_main ul').append(li);
+                    }
+                })
+            }
+        };
+
+        var index = new Index();
+    </script>
+</body>
+
+</html>

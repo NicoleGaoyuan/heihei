@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .main_right {
+            width: 35%;
+            float: right;
+        }
+
+        .tab {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .tab ul {
+            width: 100%;
+        }
+
+        .tab ul li {
+            width: 24%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+            border: 1px solid #eee;
+            border-right: none;
+            cursor: pointer;
+        }
+
+        .tab ul li:nth-child(4) {
+            border-right: 1px solid #eee;
+        }
+
+        .tab_div {
+            display: none;
+            height: 200px;
+        }
+
+        .main_right .tab .tab_div ul li {
+            width: 100%;
+            height: 30px;
+            border: none;
+            color: gray;
+            font-size: .7rem;
+            line-height: 30px;
+            text-align: left;
+            padding: 5px 0 0 20px;
+        }
+
+        .div2 h2,
+        .div3 h2 {
+            text-align: center;
+            font-weight: 350;
+            line-height: 40px;
+            font-size: .8rem;
+        }
+
+        .div2 h2:nth-child(1),
+        .div3 h2:nth-child(1) {
+            padding-top: 60px;
+        }
+
+        .div2 h2:nth-child(2) {
+            color: orangered;
+        }
+
+        .div2 button {
+            background: #009286;
+            color: white;
+            width: 75%;
+            margin: 20px auto;
+            border: none;
+            display: block;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        .div4_img {
+            width: 28%;
+            height: auto;
+            float: left;
+            padding: 0px 20px 0 30px;
+        }
+
+        .div4_img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .div4_txt {
+            width: 45%;
+            float: left;
+            padding: 30px 10px 0 0;
+        }
+
+        .div4_txt p {
+            color: orangered;
+        }
+
+        /* seach */
+
+        .seach {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #seach {
+            float: left;
+            width: 70%;
+            height: 40px;
+            display: block;
+            margin-top: 7px;
+            margin-left: 20px;
+            border: 1px solid #ddd
+        }
+
+        #seach_btn {
+            background: #009286;
+            color: white;
+            border: none;
+            width: 14%;
+            height: 40px;
+            margin-top: 7px;
+        }
+
+        /* timer */
+
+        .timer {
+            width: 100%;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .timer_logo {
+            width: 100%;
+            height: 50px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timer_logo a {
+            color: gray;
+            float: left;
+            display: block;
+            height: 50px;
+            width: 52px;
+            text-align: center;
+            line-height: 50px;
+            border-right: 1px solid #eee;
+        }
+
+        .timer_logo h2 {
+            font-weight: 350;
+            float: left;
+            font-size: 1rem;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: gray;
+            padding-left: 10px;
+        }
+
+        .timer_main h4 {
+            font-weight: 350;
+            color: #009286;
+            font-size: .9rem;
+            text-align: center;
+        }
+
+        .timer_main h4:nth-child(1) {
+            margin-top: 30px;
+        }
+
+        .timer_main h4 img {
+            width: 70%;
+            height: auto;
+            padding: 20px 0 20px 0;
+        }
+
+        .one_day {
+            height: 150px;
+        }
+
+        .one_day h4 {
+            padding: 10px 0 0 10px;
+            text-align: left;
+        }
+
+        .main_right .hot_txt {
+            height: 725px;
+            overflow: hidden;
+        }
+
+        .hot_main ul li {
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            height: 137px;
+        }
+
+        .hot_main ul li:hover .img,
+        .hot_main ul li:hover .json_r {
+            color: #009286;
+            animation: scale_img .5s ease 0s;
+        }
+
+        .main_right .hot_main ul li .img {
+            width: 8rem;
+            height: 8rem;
+            padding: 10px 0px 10px 5px;
+        }
+
+        .main_right .hot_main ul li .img img {
+            width: 100%;
+            height: 6rem;
+            margin-top: 10px;
+        }
+
+        .main_right .hot_main ul li .json_r {
+            width: 58%;
+            padding-right: 5px;
+            margin-top: -123px;
+        }
+
+        .main_right .hot_main ul li h2 {
+            color: gray;
+            font-weight: 350;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <ul>
+            <li class="miimi">网站公告</li>
+            <li>加入我们</li>
+            <li>联系站长</li>
+            <li>帮助哥们</li>
+        </ul>
+        <div class="tab_div div1" style="display: block">
+            <ul>
+                <li>这是针对第一个blog的改版
+                    <span>10-05</span>
+                </li>
+                <li>这是针对第一个blog的改版
+                    <span>10-05</span>
+                </li>
+                <li>这是针对第一个blog的改版
+                    <span>10-05</span>
+                </li>
+                <li>这是针对第一个blog的改版
+                    <span>10-05</span>
+                </li>
+            </ul>
+        </div>
+        <div class="tab_div div2">
+            <h2>想和喜欢站的朋友一起玩耍吗</h2>
+            <h2>加入我们吧</h2>
+            <button>点击加入</button>
+        </div>
+        <div class="tab_div div3">
+            <h2>Email</h2>
+            <h2>oupanO612@163.com</h2>
+            <h2>站长QQ:312010483</h2>
+        </div>
+        <div class="tab_div div4">
+            <div class="div4_img">
+                <img src="img/zhifubao.JPG" alt="">
+            </div>
+            <div class="div4_txt">
+                <p>账号：231242@qq.com</p>
+                <p>姓名：撒旦</p>
+                <p>支付宝建议1--10$</p>
+            </div>
+        </div>
+    </div>
+    <div class="seach">
+        <input type="text" name="" id="seach" placeholder="请输入关键字">
+        <input type="button" name="" id="seach_btn" value="搜索">
+    </div>
+    <div class="timer">
+        <div class="timer_logo">
+            <a href="#" class="iconfont">&#xe773;</a>
+            <h2>系统时间</h2>
+        </div>
+        <div class="timer_main timerMain">
+
+        </div>
+    </div>
+    <div class="timer one_day">
+        <div class="timer_logo">
+            <a href="#" class="iconfont">&#xe674;</a>
+            <h2>每日一句</h2>
+        </div>
+        <div class="timer_main">
+            <h4>2018年09月10日 23:25:43 星期一</h4>
+            <h4>
+                学会控制自己的情绪，不以物喜，不以己悲
+            </h4>
+        </div>
+    </div>
+    <div class="timer hot_txt">
+        <div class="timer_logo">
+            <a href="#" class="iconfont">&#xe6be;</a>
+            <h2>热门文章</h2>
+        </div>
+        <div class="timer_main hot_main">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $.get('php/select.php', function (data) {
+            var dataObj = typeof data == 'object' ? data : eval('(' + data + ')');
+            var data = dataObj.data;
+            console.log(data);
+            data.forEach(function (data) {
+                console.log(data);
+                var table = $('<li><div class="img"><img src=' + data.img + ' alt=""></div><div class="json_r"><h2>很励志的一段话，送给正在努力奋斗的</h2><span class="iconfont">&#xe61b;2018-04-08</span><span class="iconfont">&#xe707;共<i>404</i>人围观</span><p>' + data.title + '</p></div></li>');
+
+                table.attr('data_mate', data.stuID);
+                $('.main_json ul').append(table);
+
+                $('.main_json ul li').click(function () {
+                    window.open('detail.html#' + $(this).attr('data_mate'), '_self');
+                })
+            });
+        })
+        $.get('php/select.php', function (data) {
+            var dataObj = typeof data == 'object' ? data : eval('(' + data + ')');
+            var data = dataObj.data;
+            data.forEach(function (data) {
+                var table = $('<li><div class="img"><img src=' + data.img + ' alt=""></div><div class="json_r"><h2>很励志的一段话，送给正在努力奋斗的</h2><span>2018-04-08</span><span>共<i>404</i>人围观</span></div></li>');
+                table.attr('data_mate', data.stuID);
+                $('.hot_main ul').append(table);
+                $('.hot_main ul li').click(function () {
+                    window.open('detail.html#' + $(this).attr('data_mate'), '_self');
+                })
+            })
+        })
+        $('.tab ul li:nth-child(1)').on('click', function () {
+            $('.div1').css('display', 'block');
+            $('.div2').css('display', 'none');
+            $('.div3').css('display', 'none');
+            $('.div4').css('display', 'none');
+            $(this).css('border-bottom', 'none');
+            $(this).siblings().css("border-bottom", "1px solid #eee");
+        })
+        $('.tab ul li:nth-child(2)').on('click', function () {
+            $('.div1').css('display', 'none');
+            $('.div2').css('display', 'block');
+            $('.div3').css('display', 'none');
+            $('.div4').css('display', 'none');
+            $(this).css('border-bottom', 'none');
+            $(this).siblings().css("border-bottom", "1px solid #eee");
+        })
+        $('.tab ul li:nth-child(3)').on('click', function () {
+            $('.div1').css('display', 'none');
+            $('.div2').css('display', 'none');
+            $('.div3').css('display', 'block');
+            $('.div4').css('display', 'none');
+            $(this).css('border-bottom', 'none');
+            $(this).siblings().css("border-bottom", "1px solid #eee");
+        })
+        $('.tab ul li:nth-child(4)').on('click', function () {
+            $('.div1').css('display', 'none');
+            $('.div2').css('display', 'none');
+            $('.div3').css('display', 'none');
+            $('.div4').css('display', 'block');
+            $(this).css('border-bottom', 'none');
+            $(this).siblings().css("border-bottom", "1px solid #eee");
+        })
+        var Now = new Date();
+        var Day = Now.getFullYear();
+        var M = Now.getMonth() + 1;
+        var D = Now.getDate();
+        var sec = Now.getSeconds();
+        if (M < 10) M = '0' + M;
+        if (D < 10) D = '0' + D;
+
+        var H = Now.getHours()
+        var Mi = Now.getMinutes()
+        if (Mi < 10) Mi = '0' + Mi;
+        if (H < 10) H = '0' + H;
+
+        var main = $('<h4>' + Day + '年' + M + '月' + D + '日' + H + ':' + Mi + ':' + sec + '  ' + '星期二</h4><h4><img src="img/oupan.gif" alt=""></h4>');
+        $('.timerMain').append(main);
+    </script>
+</body>
+
+</html>
