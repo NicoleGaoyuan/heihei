@@ -229,22 +229,7 @@
                 })
                 lock = true;
             }
-        })
-        if (localStorage.login_mark == 1) {
-                var login_mark = localStorage.login_mark;
-            } else {
-                var login_mark = 0;
-            }
-            if (login_mark == 1) {
-                // 获取进来的用户名称
-                var name = localStorage.name;
-                console.log(name);
-                $('.header_top #username').html(name);
-                // 退出
-            }else{
-                alert('未登录');
-                window.open('login.html','_self');
-            }
+        }
     </script>
 </body>
 
