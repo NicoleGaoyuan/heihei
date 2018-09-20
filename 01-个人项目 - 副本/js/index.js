@@ -8,13 +8,13 @@
             // this.onIndex();
         },
         onIndex: function () {
-            $.post('json/index.json', function (jsonData) {
+            $.get('json/index.json', function (jsonData) {
                 var jsonObj = typeof jsonData == 'object' ? jsonData : eval('(' + jsonData + ')');
                 var jsonArr = jsonObj.items;
                 console.log(jsonArr)
                 $.each(jsonArr, function (index, item) {
                     // console.log(item);
-                    $.post('php/inster.php', item, function (data) {
+                    $.get('php/inster.php', item, function (data) {
                         if (parseInt(data)) {
                             console.log('数据插入成功');
                         } else {
